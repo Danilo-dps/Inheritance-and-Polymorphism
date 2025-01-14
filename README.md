@@ -79,3 +79,42 @@ public class Exemplo {
    - Encapsulamento: Protegendo os dados internos de uma classe contra acesso indevido.
    - Manutenibilidade: Facilitando a manutenção do código, ao restringir o acesso a certos métodos e atributos.
    - Segurança: Controlando quem pode ver e modificar os dados de uma classe.
+
+## Upcasting
+
+- Casting da subclasse para superclasse
+- Uso comum: polimorfismo
+- O **Upcasting** ocorre de forma implícita, basta atribuir o valor do objeto à superclasse que a conversão é feita automaticamente.
+
+## Downcasting
+
+- Casting da superclasse para subclasse
+- Antes de realizar o **Downcasting**, é importante usar a palavra-chave **instanceof** para verificar se o objeto é realmente uma instância da subclasse desejada, evitando erros de execução.
+- Uso comum: métodos que recebem parâmetros genéricos (ex: `equals`)
+- O **Downcasting** ocorre de forma explícita, ou seja, é necessário especificar o tipo do objeto que está sendo convertido.
+- O casting se faz necessário também caso precise usar os métodos da subclasse
+
+# Sobreposição ou sobrescrita
+
+- É a implementação de um método de uma superclasse na subclasse
+- É fortemente recomendável usar a anotação @Override em um método sobrescrito
+- Facilita a leitura e compreensão do código
+- Avisamos ao compilador (boa prática)
+
+## Exercício de exemplo com contas, de nome SobreposiçãoSuperOverride
+
+- Temos a classe `Account` sendo a superclasse, e as classes `BusinessAccount` e `SavingsAccount` que são as subclasses
+- `BusinessAccount` e `SavingsAccount` tem politicas de saques diferentes e por isso precisam sobreescrever o método `withdraw` 
+- Palavra **super**
+- É possível chamar a implementação da superclasse usando a palavra `super`.
+- Suponha que, na classe `BusinessAccount`, a regra para saque seja realizar o
+saque normalmente da superclasse, e descontar mais 2.0.
+- A sobreposição, fazendo o uso do `super` aplicou o que a superclasse `Account` faz, mais um desconto extra de 2.0, mostrando que é possível fazer uso da classe pai através da palavra `super`
+
+```java
+@Override
+public void withdraw(double amount) {
+super.withdraw(amount);
+balance -= 2.0;
+}
+```
